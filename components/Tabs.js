@@ -9,3 +9,54 @@
 //    <div class="tab">topic here</div>
 //
 // NOTE: you do _not_ need to install axios as it's included in the HTML via script element
+
+const topics = document.querySelector('.topics');
+
+axios.get('https://lambda-times-api.herokuapp.com/topics')
+.then((res) => {
+    console.log(res.data);
+    const info = res.data.topics;
+    // console.log(tabs);
+    // info.forEach( E => {
+        const tabs = tab(info);
+        // topics.appendChild(tabs);
+        // console.log(tabs);
+    // });
+
+})
+
+
+
+function tab(data){
+
+    data.forEach((one) => {
+        let button = document.createElement('div');
+        button.textContent = one;
+        button.classList.add('tab');
+        topics.appendChild(button);
+    });
+
+    // return button;
+    // tabO = document.createElement('div');
+    // tabT = document.createElement('div');
+    // tabTh = document.createElement('div');
+    // tabF = document.createElement('div');
+    // tabFi = document.createElement('div');
+
+    // tabO.appendChild(tabT);
+    // tabO.appendChild(tabTh);
+    // tabO.appendChild(tabF);
+    // tabO.appendChild(tabFi);
+
+    // tabO.classList.add('tab');
+    // tabT.classList.add('tab');
+    // tabTh.classList.add('tab');
+    // tabF.classList.add('tab');
+    // tabFi.classList.add('tab');
+
+    // tabO.textContent = data;
+    // tabT.textContent = data;
+    // tabTh.textContent = data;
+    // tabF.textContent = data;
+    // tabFi.textContent = data;
+}
