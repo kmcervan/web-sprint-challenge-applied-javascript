@@ -23,6 +23,8 @@
 
 const { default: Axios } = require("axios");
 
+const title = document.querySelector('.title');
+
 axios.get('https://lambda-times-api.herokuapp.com/articles')
 .then((res) => {
     console.log(res.data.articles);
@@ -30,8 +32,31 @@ axios.get('https://lambda-times-api.herokuapp.com/articles')
     const nameTwo = functionTwo(nameOne);
 })
 
-// function functionTwo(data){
-//     data.forEach((one) => {
+function functionTwo({data}){
+    
+    // data.forEach((one) => {
+        let card = document.createElement('div');
+        let headline = document.createElement('div');
+        let author = document.createElement('div');
+        let imgCon = document.createElement('div');
+        let img = document.createElement('img');
+        let span = document.createElement('span');
 
-//     })
-// }
+        title.appendChild(card);
+        card.appendChild(headline);
+        card.appendChild(author);
+        card.appendChild(imgCon);
+        card.appendChild(img);
+        card.appendChild(span);
+
+        card.classList.add('card');
+        headline.classList.add('headline');
+        author.classList.add('author');
+        imgCon.classList.add('img-container');
+        
+        headline.textContent = `${data[0].authorName}`;
+        span.textContent = `${data[0].authorName}`;
+        img.src = `${data[0].authorPhoto}`;
+    // })
+    return card;
+}
